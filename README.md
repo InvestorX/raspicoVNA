@@ -4,16 +4,21 @@ Raspberry Pi Pico 2 リアルタイムFFTスペクトラムアナライザ
 ## 概要
 このプロジェクトは、Raspberry Pi Pico 2を使用してアナログ信号のリアルタイムFFT解析を行い、結果をVGA出力でバーグラフ表示するシステムです。
 
-なお、本プロジェクトは以下のコードを参考にしています：
+特徴として以下の機能を備えています：
+- アナログ信号を128kHzでサンプリング
+- FIRローパスフィルタ（64タップ）によるノイズ除去
+- 256点の高速フーリエ変換（FFT）による周波数解析
+- VGA出力（320×240解像度、モノクロバーグラフ）でスペクトラム表示
+- DMAによる二重バッファリングでリアルタイム処理を実現
+- dBm単位でのスペクトラム描画
+
+なお、本プロジェクトのコードは以下のリポジトリを参考にしています：
 - [ADCとFFTの実装例 - awulff-pico-playground](https://github.com/AlexFWulff/awulff-pico-playground/tree/e0c98d544ad0cf7972edaf5215ae165e835f29eb/adc_fft)
 
 ## 特徴
-- **128kHzサンプリング**: 高速なADCサンプリングでリアルタイム処理を実現。
-- **64タップFIRローパスフィルタ**: 50kHzカットオフで不要な高周波を除去。
-- **リアルタイム256点FFT**: 高速フーリエ変換で周波数成分を解析。
-- **dBm単位の振幅スペクトル表示**: 結果を電力単位（dBm）で可視化。
-- **VGA出力**: 320×240解像度のモノクロバーグラフを表示（VGA→HDMI変換対応）。
-- **DMA二重バッファリング**: サンプリング欠落を防ぐ設計。
+- **リアルタイムスペクトラム解析**: 高速なADCサンプリングとFFT解析を組み合わせ、リアルタイムで周波数成分を表示します。
+- **ハードウェア最適化**: DMA二重バッファリングとPIOを活用して効率的なデータ処理を実現。
+- **簡易表示**: dBm単位のバーグラフをVGA出力で直接描画。
 
 ## ハードウェア要件
 - **Raspberry Pi Pico 2**
@@ -30,26 +35,16 @@ Raspberry Pi Pico 2 リアルタイムFFTスペクトラムアナライザ
 ```
 raspicoVNA/
 ├── src/
-│   ├── main.c                # メインプログラム
-│   ├── adc_dma.c             # ADCとDMA管理
-│   ├── fir_filter.c          # FIRフィルタ処理
-│   ├── vga_output.c          # VGA出力管理
-│   └── spectrum_display.c    # スペクトラム表示処理
+│   ├── fft_vga_display_complete.c # メインプログラム
 ├── include/
-│   ├── config.h              # 設定ファイル
-│   ├── adc_dma.h             # ADCとDMAヘッダ
-│   ├── fir_filter.h          # FIRフィルタヘッダ
-│   ├── vga_output.h          # VGA出力ヘッダ
-│   └── spectrum_display.h    # スペクトラム表示ヘッダ
-├── pio/
-│   └── vga.pio               # PIOプログラム（VGA信号生成）
+│   ├── vga.pio.h # VGA出力用PIOプログラムヘッダ
 ├── lib/
-│   └── kissfft/              # FFTライブラリ
+│   └── kissfft/ # FFTライブラリ
 ├── docs/
-│   ├── hardware_setup.md     # ハードウェア設定ドキュメント
-│   ├── calibration.md        # 校正方法
-│   └── troubleshooting.md    # トラブルシューティング
-└── CMakeLists.txt            # ビルド設定
+│   ├── hardware_setup.md # ハードウェア設定ドキュメント
+│   ├── calibration.md # 校正方法
+│   └── troubleshooting.md # トラブルシューティング
+└── CMakeLists.txt # ビルド設定
 ```
 
 ## ビルドと実行
