@@ -96,3 +96,5 @@ is worth it, you can buy me a **sushi 🍣** in return.
 
 (This license is based on ["THE BEER-WARE LICENSE" (Revision 42)].
  Thanks a lot, Poul-Henning Kamp ;)
+
+​["THE BEER-WARE LICENSE" (Revision 42)]: https://people.freebsd.org/~phk/
