@@ -85,16 +85,14 @@ make
 3. 機能追加やバグ修正を行います。
 4. プルリクエストを送信します。
 
-## ライセンス
-このプロジェクトは「Sushi Ware」ライセンスの下で提供されます。  
-「もしもこのソフトウェアが役に立つと思ったなら、寿司をおごってください！」という精神に基づいています。
+## License
+### "THE SUSHI-WARE LICENSE"
 
-### 寿司ライセンスの内容
-```
-/*
- * Sushi Ware License
- *
- * If you like this software and feel it’s helpful,
- * please buy me sushi sometime. 🍣
- */
-```
+InvestorX wrote this file.
+
+As long as you retain this notice you can do whatever you want
+with this stuff. If we meet some day, and you think this stuff
+is worth it, you can buy me a **sushi 🍣** in return.
+
+(This license is based on ["THE BEER-WARE LICENSE" (Revision 42)].
+ Thanks a lot, Poul-Henning Kamp ;)
