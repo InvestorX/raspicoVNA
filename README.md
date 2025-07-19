@@ -4,6 +4,9 @@ Raspberry Pi Pico 2 リアルタイムFFTスペクトラムアナライザ
 ## 概要
 このプロジェクトは、Raspberry Pi Pico 2を使用してアナログ信号のリアルタイムFFT解析を行い、結果をVGA出力でバーグラフ表示するシステムです。
 
+なお、本プロジェクトは以下のコードを参考にしています：
+- [ADCとFFTの実装例 - awulff-pico-playground](https://github.com/AlexFWulff/awulff-pico-playground/tree/e0c98d544ad0cf7972edaf5215ae165e835f29eb/adc_fft)
+
 ## 特徴
 - **128kHzサンプリング**: 高速なADCサンプリングでリアルタイム処理を実現。
 - **64タップFIRローパスフィルタ**: 50kHzカットオフで不要な高周波を除去。
